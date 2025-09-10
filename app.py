@@ -212,7 +212,7 @@ def quiz(career_name):
         return redirect(url_for('home'))
 
     # Always generate new quiz using Gemini API
-    api_key = "AIzaSyCusi29EUENaQ5_H6nfWTEtX5JpU9EM2yw"  # Provided API key
+    api_key = " "  # Provided API key
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={api_key}"
     prompt = f"Generate 10 multiple choice questions for {career_name}. Each question should have 4 options A-D, the correct answer, and difficulty level (Easy, Intermediate, Difficult). Ensure a mix of easy, intermediate, and difficult questions. Format as Q1. Question text\nA) option1\nB) option2\nC) option3\nD) option4\nAnswer: A\nDifficulty: Easy\n\nQ2. ..."
     data = {
@@ -284,3 +284,4 @@ def submit_quiz(career_name):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
