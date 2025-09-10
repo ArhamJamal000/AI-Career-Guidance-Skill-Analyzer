@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework Rating - AI Career Guidance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+        }
+        .framework-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .framework-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-5 fw-bold mb-3">Rate Your Framework Proficiency</h1>
+                    <p class="lead mb-0">
+                        Rate your skills in the frameworks and libraries for your selected technologies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3 class="mb-0">Framework Assessment</h3>
+                        <p class="mb-0">Rate your proficiency from 0 (No experience) to 5 (Expert)</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" action="{{ url_for('analyze') }}">
+                            {% for skill_group in selected_skills %}
+                            <div class="mb-5">
+                                <h4 class="text-primary mb-3">{{ skill_group }}</h4>
+                                <div class="row">
+                                    {% for framework in skills_data[skill_group] %}
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card framework-card h-100 shadow-sm" style="border-radius: 10px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title fw-bold">{{ framework }}</h5>
+                                                <div class="mb-3 d-flex align-items-center">
+                                                    <input type="range" class="form-range me-3" min="0" max="5" step="1" id="rating_{{ framework }}" name="rating_{{ framework }}" value="0" oninput="this.nextElementSibling.value = this.value" style="max-width: 200px;" required>
+                                                    <output class="fw-semibold">0</output>
+                                                </div>
+                                                <div class="d-flex justify-content-between text-muted small">
+                                                    <span>No experience</span>
+                                                    <span>Expert</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                    Analyze My Skills
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 AI Career Guidance System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize slider values
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliders = document.querySelectorAll('input[type="range"]');
+            sliders.forEach(slider => {
+                const output = slider.nextElementSibling;
+                output.value = slider.value;
+            });
+        });
+    </script>
+</body>
+</html>

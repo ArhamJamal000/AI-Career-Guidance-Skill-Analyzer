@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Guidance & Skill Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">AI Career Guidance & Skill Analyzer</h1>
+                    <p class="lead mb-4">
+                        Discover your ideal career path with our advanced AI-powered skill analysis system.
+                        Get personalized career recommendations, detailed roadmaps, and skill development plans.
+                    </p>
+                    <a href="#assessment" class="btn btn-light btn-lg px-5 py-3">
+                        Start Assessment
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Selection Section -->
+    <div id="assessment" class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3 class="mb-0">Select Your Known Skills</h3>
+                        <p class="mb-0">Choose all the skills you have experience with</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="skillSelectionForm" action="{{ url_for('frameworks') }}" method="post">
+                            <div class="row">
+                                {% for skill_group in skill_groups %}
+                                <div class="col-md-4 mb-4">
+                                    <div class="card skill-card h-100 shadow-sm" style="border-radius: 15px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                        <div class="card-body text-center">
+                                            <input type="checkbox" id="skill_{{ skill_group }}" name="selected_skills" value="{{ skill_group }}" class="d-none">
+                                            <h5 class="card-title fw-bold">{{ skill_group }}</h5>
+                                            <div class="form-check d-flex justify-content-center">
+                                                <input class="form-check-input me-2" type="checkbox" id="check_{{ skill_group }}" onchange="toggleSkill('{{ skill_group }}')" style="transform: scale(1.2);">
+                                                <label class="form-check-label fw-semibold" for="check_{{ skill_group }}">
+                                                    I know this
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-5" id="nextBtn" disabled>
+                                    Next Step
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h2 class="text-center mb-5">How It Works</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card feature-card h-100 border-0 shadow">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <span class="badge bg-primary fs-4">1</span>
+                                </div>
+                                <h5 class="card-title">Skill Assessment</h5>
+                                <p class="card-text">
+                                    Rate your proficiency in various programming languages, frameworks, and tools
+                                    through our comprehensive multi-step questionnaire.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card feature-card h-100 border-0 shadow">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <span class="badge bg-success fs-4">2</span>
+                                </div>
+                                <h5 class="card-title">Career Matching</h5>
+                                <p class="card-text">
+                                    Our AI analyzes your skills and matches you with the most suitable careers
+                                    from Technology, Engineering, and Business fields.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card feature-card h-100 border-0 shadow">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <span class="badge bg-info fs-4">3</span>
+                                </div>
+                                <h5 class="card-title">Personalized Roadmap</h5>
+                                <p class="card-text">
+                                    Receive a customized learning roadmap with month-wise plans, recommended resources,
+                                    and skill development strategies.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-4">Ready to Discover Your Career Path?</h2>
+                    <p class="lead mb-4">
+                        Join thousands of professionals who have found their ideal career with our guidance system.
+                    </p>
+                    <a href="#assessment" class="btn btn-primary btn-lg px-5 py-3">
+                        Begin Your Journey
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 AI Career Guidance System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleSkill(skill) {
+            const checkbox = document.getElementById('skill_' + skill);
+            const checkInput = document.getElementById('check_' + skill);
+            const card = checkInput.closest('.skill-card');
+
+            if (checkInput.checked) {
+                checkbox.checked = true;
+                card.classList.add('border-primary');
+                card.classList.add('bg-light');
+            } else {
+                checkbox.checked = false;
+                card.classList.remove('border-primary');
+                card.classList.remove('bg-light');
+            }
+
+            updateNextButton();
+        }
+
+        function updateNextButton() {
+            const checkedBoxes = document.querySelectorAll('input[name="selected_skills"]:checked');
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = checkedBoxes.length === 0;
+        }
+
+        // Initialize button state
+        document.addEventListener('DOMContentLoaded', function() {
+            updateNextButton();
+        });
+    </script>
+</body>
+</html>

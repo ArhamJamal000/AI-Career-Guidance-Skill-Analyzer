@@ -1,0 +1,707 @@
+{
+  "Software Developer": {
+    "required_skills": ["Python", "JavaScript", "Git", "Algorithms", "Data Structures"],
+    "roadmap": [
+      "Month 1: Learn Python/JavaScript basics and Git version control.",
+      "Month 2: Study data structures and algorithms.",
+      "Month 3: Build small projects (to-do app, calculator).",
+      "Month 4: Learn web frameworks (Flask/React).",
+      "Month 5: Build full-stack projects and deploy (Render/Netlify).",
+      "Month 6: Solve coding problems and prepare for interviews."
+    ],
+    "resources": [
+      "https://www.w3schools.com/",
+      "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+      "https://www.geeksforgeeks.org/data-structures/",
+      "https://www.frontendmentor.io/",
+      "https://flask.palletsprojects.com/",
+      "https://react.dev/learn",
+      "https://render.com/",
+      "https://www.netlify.com/",
+      "https://leetcode.com/",
+      "https://www.youtube.com/watch?v=8ext9G7xspg"
+    ]
+  },
+  "Data Scientist": {
+    "required_skills": ["Python", "SQL", "Statistics", "Machine Learning", "Data Visualization"],
+    "roadmap": [
+      "Month 1: Learn Python and SQL basics.",
+      "Month 2: Study statistics and probability.",
+      "Month 3: Introduction to ML with Scikit-learn.",
+      "Month 4: Practice visualization (Matplotlib/Seaborn).",
+      "Month 5: Work on real datasets (Kaggle).",
+      "Month 6: Learn advanced ML (fast.ai) and deploy models."
+    ],
+    "resources": [
+      "https://www.kaggle.com/learn/python",
+      "https://sqlbolt.com/",
+      "https://www.khanacademy.org/math/statistics-probability",
+      "https://scikit-learn.org/stable/tutorial/index.html",
+      "https://matplotlib.org/stable/tutorials/index.html",
+      "https://seaborn.pydata.org/tutorial.html",
+      "https://www.kaggle.com/datasets",
+      "https://course.fast.ai/",
+      "https://www.youtube.com/watch?v=r-uOLxNrNk8"
+    ]
+  },
+  "AI/ML Engineer": {
+    "required_skills": ["Python", "Deep Learning", "TensorFlow", "NLP", "Computer Vision"],
+    "roadmap": [
+      "Month 1: Learn Python, Numpy, and Pandas.",
+      "Month 2: Study ML fundamentals (Google MLCC).",
+      "Month 3: Deep learning with TensorFlow/Keras.",
+      "Month 4: Learn NLP (Hugging Face).",
+      "Month 5: Computer vision with OpenCV.",
+      "Month 6: Deploy ML/AI models (TensorFlow Serving/HF Spaces)."
+    ],
+    "resources": [
+      "https://numpy.org/learn/",
+      "https://pandas.pydata.org/docs/getting_started/index.html",
+      "https://developers.google.com/machine-learning/crash-course",
+      "https://www.tensorflow.org/tutorials",
+      "https://huggingface.co/transformers/training",
+      "https://docs.opencv.org/master/d6/d00/tutorial_py_root.html",
+      "https://www.tensorflow.org/tfx/guide/serving",
+      "https://huggingface.co/spaces",
+      "https://www.youtube.com/watch?v=aircAruvnKk"
+    ]
+  },
+  "Cybersecurity Analyst": {
+    "required_skills": ["Networking", "Python", "Ethical Hacking", "Firewalls", "Cryptography"],
+    "roadmap": [
+      "Month 1: Learn networking basics (OSI, TCP/IP).",
+      "Month 2: Cybersecurity fundamentals and Linux basics.",
+      "Month 3: Ethical hacking labs (TryHackMe).",
+      "Month 4: Study cryptography and secure coding.",
+      "Month 5: Learn incident response and forensics.",
+      "Month 6: Work on Capture The Flag (CTF) challenges."
+    ],
+    "resources": [
+      "https://www.netacad.com/courses/networking",
+      "https://overthewire.org/wargames/",
+      "https://tryhackme.com/",
+      "https://cryptobook.nakov.com/",
+      "https://www.hackthebox.com/",
+      "https://ctftime.org/",
+      "https://www.youtube.com/watch?v=inWWhr5tnEA"
+    ]
+  },
+  "Cloud Architect": {
+    "required_skills": ["AWS", "Azure", "Docker", "Kubernetes", "Terraform"],
+    "roadmap": [
+      "Month 1: Learn cloud basics with AWS/Azure free training.",
+      "Month 2: Containerization with Docker.",
+      "Month 3: Learn Kubernetes orchestration.",
+      "Month 4: Infrastructure as Code with Terraform.",
+      "Month 5: Practice designing scalable systems.",
+      "Month 6: Study serverless and microservices."
+    ],
+    "resources": [
+      "https://aws.amazon.com/training/learn-about/aws-fundamentals/",
+      "https://learn.microsoft.com/en-us/training/azure/",
+      "https://docker-curriculum.com/",
+      "https://kubernetes.io/docs/tutorials/",
+      "https://developer.hashicorp.com/terraform/tutorials",
+      "https://www.youtube.com/watch?v=2LaAJq1lB1Q"
+    ]
+  },
+  "Network Engineer": {
+    "required_skills": ["Networking", "Cisco", "Linux", "TCP/IP", "Firewalls"],
+    "roadmap": [
+      "Month 1: Networking fundamentals and OSI model.",
+      "Month 2: TCP/IP and subnetting.",
+      "Month 3: Cisco basics (Packet Tracer).",
+      "Month 4: Network security and firewalls.",
+      "Month 5: Wireless networking and VPNs.",
+      "Month 6: Monitoring and troubleshooting."
+    ],
+    "resources": [
+      "https://www.netacad.com/courses/networking",
+      "https://www.practicalnetworking.net/",
+      "https://wiki.linuxfoundation.org/networking/start",
+      "https://www.cloudflare.com/learning/network-layer/what-is-a-firewall/",
+      "https://www.youtube.com/playlist?list=PLDQaRcbiSnqF5U8ffMgZzS9zQG6Qn5qUE"
+    ]
+  },
+  "Systems Engineer": {
+    "required_skills": ["Linux", "Windows Server", "Scripting", "Virtualization", "Monitoring"],
+    "roadmap": [
+      "Month 1: Learn Linux system administration.",
+      "Month 2: Learn Windows Server basics.",
+      "Month 3: Practice scripting (Bash, PowerShell).",
+      "Month 4: Learn virtualization (VirtualBox, KVM).",
+      "Month 5: System monitoring tools.",
+      "Month 6: Automation with Ansible."
+    ],
+    "resources": [
+      "https://ubuntu.com/tutorials",
+      "https://learn.microsoft.com/en-us/windows-server/",
+      "https://learn.microsoft.com/en-us/powershell/",
+      "https://www.virtualbox.org/wiki/Tutorials",
+      "https://www.ansible.com/resources/get-started",
+      "https://www.youtube.com/watch?v=IVquJh3DXUA"
+    ]
+  },
+  "DevOps Engineer": {
+    "required_skills": ["Linux", "Docker", "Kubernetes", "CI/CD", "AWS"],
+    "roadmap": [
+      "Month 1: Linux and shell scripting.",
+      "Month 2: Learn Git and GitHub.",
+      "Month 3: Containerization with Docker.",
+      "Month 4: Build CI/CD pipelines.",
+      "Month 5: Learn Kubernetes orchestration.",
+      "Month 6: Cloud deployment (AWS free tier)."
+    ],
+    "resources": [
+      "https://linuxjourney.com/",
+      "https://git-scm.com/doc",
+      "https://docker-curriculum.com/",
+      "https://docs.gitlab.com/ee/ci/",
+      "https://kubernetes.io/docs/tutorials/",
+      "https://aws.amazon.com/free/",
+      "https://www.youtube.com/watch?v=j5Zsa_eOXeY"
+    ]
+  },
+  "Robotics Engineer": {
+    "required_skills": ["Python", "C++", "ROS", "Sensors", "Control Systems"],
+    "roadmap": [
+      "Month 1: Basics of Python/C++.",
+      "Month 2: Learn sensors and electronics.",
+      "Month 3: Intro to ROS.",
+      "Month 4: Study control systems and kinematics.",
+      "Month 5: Build simple robots.",
+      "Month 6: Advanced robotics projects."
+    ],
+    "resources": [
+      "https://www.learncpp.com/",
+      "https://www.arduino.cc/",
+      "http://wiki.ros.org/",
+      "https://ocw.mit.edu/courses/mechanical-engineering/2-14-analysis-and-design-of-feedback-control-systems-fall-2014/",
+      "https://www.youtube.com/watch?v=2PzW3Aqef5A"
+    ]
+  },
+  "Embedded Systems Engineer": {
+    "required_skills": ["C", "C++", "Microcontrollers", "RTOS", "Hardware Design"],
+    "roadmap": [
+      "Month 1: C/C++ programming.",
+      "Month 2: Microcontroller basics (Arduino, Pi).",
+      "Month 3: Learn RTOS basics.",
+      "Month 4: Hardware interfacing.",
+      "Month 5: Power optimization.",
+      "Month 6: Build embedded projects."
+    ],
+    "resources": [
+      "https://www.learn-c.org/",
+      "https://www.arduino.cc/",
+      "https://www.raspberrypi.org/learn/",
+      "https://os.mbed.com/docs/mbed-os/v6.15/introduction/index.html",
+      "https://www.electronics-tutorials.ws/",
+      "https://www.youtube.com/watch?v=aqnXsgt7xjI"
+    ]
+  },
+
+  
+  "Mechanical Engineer": {
+    "required_skills": ["CAD", "SolidWorks", "Thermodynamics", "Materials Science", "Manufacturing"],
+    "roadmap": [
+      "Month 1: Math and physics.",
+      "Month 2: Learn CAD tools.",
+      "Month 3: Thermodynamics basics.",
+      "Month 4: Materials science.",
+      "Month 5: Manufacturing processes.",
+      "Month 6: Projects and simulations."
+    ],
+    "resources": [
+      "https://nptel.ac.in/courses/112101005",
+      "https://www.autodesk.com/education/edu-software/overview",
+      "https://ocw.mit.edu/courses/mechanical-engineering/",
+      "https://mechanicalc.com/",
+      "https://www.youtube.com/playlist?list=PLbMVogVj5nJSF4UOyVP1nfzkio3D0kS7x"
+    ]
+  },
+  "Civil Engineer": {
+    "required_skills": ["AutoCAD", "Structural Analysis", "Geotechnical Engineering", "Construction Management", "Surveying"],
+    "roadmap": [
+      "Month 1: Civil fundamentals.",
+      "Month 2: Structural analysis.",
+      "Month 3: Geotechnical basics.",
+      "Month 4: Construction management.",
+      "Month 5: Surveying techniques.",
+      "Month 6: Project management."
+    ],
+    "resources": [
+      "https://nptel.ac.in/courses/105105108",
+      "https://www.autodesk.com/education/edu-software/overview",
+      "https://ascelibrary.org/",
+      "https://www.coursera.org/learn/construction-project-management",
+      "https://www.youtube.com/playlist?list=PLlywMQwa2HgTkC8iLdrA8grxW1pX6UM3-"
+    ]
+  },
+  "Electrical Engineer": {
+    "required_skills": ["Circuit Design", "Power Systems", "Control Systems", "Electronics", "MATLAB"],
+    "roadmap": [
+      "Month 1: Circuit basics.",
+      "Month 2: Power systems.",
+      "Month 3: Control systems.",
+      "Month 4: Electronics.",
+      "Month 5: MATLAB for EE.",
+      "Month 6: Projects."
+    ],
+    "resources": [
+      "https://www.allaboutcircuits.com/",
+      "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/",
+      "https://www.mathworks.com/learn/tutorials/matlab-onramp.html",
+      "https://www.youtube.com/playlist?list=PLdgVBOaXkb9A16k99BdV_dJfQOukgqSxA"
+    ]
+  },
+  "Chemical Engineer": {
+    "required_skills": ["Chemistry", "Process Engineering", "Thermodynamics", "Mass Transfer", "Reaction Engineering"],
+    "roadmap": [
+      "Month 1: Chemistry basics.",
+      "Month 2: Thermodynamics.",
+      "Month 3: Mass/heat transfer.",
+      "Month 4: Process design.",
+      "Month 5: Reaction engineering.",
+      "Month 6: Plant design."
+    ],
+    "resources": [
+      "https://nptel.ac.in/courses/103103027",
+      "https://ocw.mit.edu/courses/chemical-engineering/",
+      "https://www.aiche.org/",
+      "https://www.youtube.com/playlist?list=PLxjT_0KJ3z0tBGs2Rzp_6JZkD2YVwP6ZS"
+    ]
+  },
+  "Full Stack Developer": {
+    "required_skills": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+    "roadmap": [
+      "Month 1: HTML/CSS/JS basics.",
+      "Month 2: Learn React.",
+      "Month 3: Learn Node.js and Express.",
+      "Month 4: Databases (SQL/MongoDB).",
+      "Month 5: Build full-stack apps.",
+      "Month 6: Deploy projects."
+    ],
+    "resources": [
+      "https://developer.mozilla.org/en-US/docs/Learn",
+      "https://react.dev/learn",
+      "https://nodejs.org/en/learn",
+      "https://www.mongodb.com/docs/",
+      "https://vercel.com/",
+      "https://www.netlify.com/",
+      "https://www.youtube.com/watch?v=nu_pCVPKzTk"
+    ]
+  },
+  "Mobile App Developer": {
+    "required_skills": ["JavaScript", "React Native", "Swift", "Kotlin", "Firebase"],
+    "roadmap": [
+      "Month 1: JS basics.",
+      "Month 2: Learn React Native.",
+      "Month 3: Swift/Kotlin basics.",
+      "Month 4: Firebase backend.",
+      "Month 5: Deploy to app stores.",
+      "Month 6: Advanced features."
+    ],
+    "resources": [
+      "https://reactnative.dev/docs/getting-started",
+      "https://developer.apple.com/swift/",
+      "https://developer.android.com/kotlin",
+      "https://firebase.google.com/docs",
+      "https://www.youtube.com/watch?v=0-S5a0eXPoc"
+    ]
+  },
+  "Game Developer": {
+    "required_skills": ["C#", "Unity", "Unreal Engine", "3D Modeling", "Game Design"],
+    "roadmap": [
+      "Month 1: Learn C# basics.",
+      "Month 2: Learn Unity or Unreal.",
+      "Month 3: Basics of 3D modeling.",
+      "Month 4: Game design principles.",
+      "Month 5: Build small games.",
+      "Month 6: Publish projects."
+    ],
+    "resources": [
+      "https://learn.unity.com/",
+      "https://docs.unrealengine.com/",
+      "https://www.blender.org/",
+      "https://www.gamedev.net/",
+      "https://www.youtube.com/watch?v=gB1F9G0JXOo"
+    ]
+  },
+  "QA Engineer": {
+    "required_skills": ["Testing", "Selenium", "Automation", "Bug Tracking", "Agile"],
+    "roadmap": [
+      "Month 1: Testing fundamentals.",
+      "Month 2: Manual testing.",
+      "Month 3: Automation with Selenium.",
+      "Month 4: Bug tracking tools.",
+      "Month 5: Agile testing.",
+      "Month 6: Performance testing."
+    ],
+    "resources": [
+      "https://www.guru99.com/software-testing.html",
+      "https://www.selenium.dev/documentation/",
+      "https://www.atlassian.com/software/jira/guides",
+      "https://www.scrumguides.org/",
+      "https://www.youtube.com/watch?v=TFy9h93jTBY"
+    ]
+  },
+  "Database Administrator": {
+    "required_skills": ["SQL", "MySQL", "PostgreSQL", "MongoDB", "Database Design"],
+    "roadmap": [
+      "Month 1: SQL basics.",
+      "Month 2: Relational DBs.",
+      "Month 3: NoSQL DBs.",
+      "Month 4: Database design.",
+      "Month 5: Optimization.",
+      "Month 6: Backup & recovery."
+    ],
+    "resources": [
+      "https://sqlbolt.com/",
+      "https://dev.mysql.com/doc/",
+      "https://www.postgresql.org/docs/",
+      "https://www.mongodb.com/docs/",
+      "https://www.youtube.com/watch?v=HXV3zeQKqGY"
+    ]
+  },
+  
+  "Blockchain Developer": {
+    "required_skills": ["Solidity", "Ethereum", "Smart Contracts", "Cryptography", "Web3"],
+    "roadmap": [
+      "Month 1: Blockchain basics.",
+      "Month 2: Solidity programming.",
+      "Month 3: Ethereum development.",
+      "Month 4: Build dApps.",
+      "Month 5: Web3.js integration.",
+      "Month 6: Smart contract security."
+    ],
+    "resources": [
+      "https://soliditylang.org/",
+      "https://ethereum.org/en/developers/docs/",
+      "https://web3js.readthedocs.io/",
+      "https://cryptozombies.io/",
+      "https://www.youtube.com/watch?v=M576WGiDBdQ"
+    ]
+  },
+  "IoT Engineer": {
+    "required_skills": ["Python", "Arduino", "Raspberry Pi", "Sensors", "MQTT"],
+    "roadmap": [
+      "Month 1: IoT basics.",
+      "Month 2: Learn Python.",
+      "Month 3: Sensors & actuators.",
+      "Month 4: MQTT protocol.",
+      "Month 5: Build IoT projects.",
+      "Month 6: Cloud integration."
+    ],
+    "resources": [
+      "https://www.arduino.cc/",
+      "https://www.raspberrypi.org/learn/",
+      "https://www.eclipse.org/paho/",
+      "https://www.hivemq.com/mqtt-essentials/",
+      "https://www.youtube.com/watch?v=6SxWHnHlh6I"
+    ]
+  },
+  "Business Analyst": {
+    "required_skills": ["SQL", "Excel", "Data Analysis", "Requirements Gathering", "Agile"],
+    "roadmap": [
+      "Month 1: Business analysis basics.",
+      "Month 2: Excel & SQL for data.",
+      "Month 3: Requirements gathering.",
+      "Month 4: Agile & Scrum.",
+      "Month 5: Data visualization.",
+      "Month 6: Case studies."
+    ],
+    "resources": [
+      "https://sqlbolt.com/",
+      "https://exceljet.net/",
+      "https://www.scrumguides.org/",
+      "https://datavizcatalogue.com/",
+      "https://www.youtube.com/watch?v=6RjrxJ8pxYI"
+    ]
+  },
+  "Management Consultant": {
+    "required_skills": ["Strategy", "Problem Solving", "Presentation", "Excel", "Data Analysis"],
+    "roadmap": [
+      "Month 1: Strategy frameworks.",
+      "Month 2: Problem-solving techniques.",
+      "Month 3: Data modeling.",
+      "Month 4: Presentation skills.",
+      "Month 5: Case interview prep.",
+      "Month 6: Consulting toolkits."
+    ],
+    "resources": [
+      "https://www.strategyzer.com/",
+      "https://www.mckinsey.com/careers/interviewing",
+      "https://exceljet.net/",
+      "https://www.youtube.com/watch?v=SEtLpLwnsyI"
+    ]
+  },
+  "Project Manager": {
+    "required_skills": ["Project Management", "Agile", "Scrum", "Risk Management", "Communication"],
+    "roadmap": [
+      "Month 1: Project management basics.",
+      "Month 2: Agile and Scrum.",
+      "Month 3: Risk & stakeholders.",
+      "Month 4: Budgeting & resources.",
+      "Month 5: Tools like Jira/Trello.",
+      "Month 6: PMP-style case studies."
+    ],
+    "resources": [
+      "https://www.scrumguides.org/",
+      "https://www.atlassian.com/agile",
+      "https://trello.com/guide",
+      "https://www.pmi.org/learning/library",
+      "https://www.youtube.com/watch?v=QjKcyfS9cD0"
+    ]
+  },
+  "Marketing Manager": {
+    "required_skills": ["Digital Marketing", "SEO", "Content Marketing", "Analytics", "Social Media"],
+    "roadmap": [
+      "Month 1: Learn digital marketing basics.",
+      "Month 2: Learn SEO fundamentals.",
+      "Month 3: Practice content marketing.",
+      "Month 4: Social media management.",
+      "Month 5: Analytics & campaign metrics.",
+      "Month 6: Build marketing strategy projects."
+    ],
+    "resources": [
+      "https://www.google.com/digitalgarage/",
+      "https://moz.com/learn/seo",
+      "https://contentmarketinginstitute.com/what-is-content-marketing/",
+      "https://analytics.google.com/analytics/academy/",
+      "https://buffer.com/library/social-media-marketing/",
+      "https://www.youtube.com/watch?v=nJZ6E3VQfDo"
+    ]
+  },
+  "Financial Analyst": {
+    "required_skills": ["Excel", "Financial Modeling", "Valuation", "Accounting", "Python"],
+    "roadmap": [
+      "Month 1: Accounting basics.",
+      "Month 2: Excel for finance.",
+      "Month 3: Financial modeling.",
+      "Month 4: Valuation techniques.",
+      "Month 5: Python for finance.",
+      "Month 6: Case studies and CFA basics."
+    ],
+    "resources": [
+      "https://www.accountingcoach.com/",
+      "https://exceljet.net/",
+      "https://corporatefinanceinstitute.com/resources/valuation/",
+      "https://www.datacamp.com/courses/finance-python-free",
+      "https://www.cfainstitute.org/en/programs/cfa",
+      "https://www.youtube.com/watch?v=O0LOc2fWcVg"
+    ]
+  },
+  "HR Manager": {
+    "required_skills": ["Recruitment", "Employee Relations", "HR Policies", "Training", "Compliance"],
+    "roadmap": [
+      "Month 1: HR fundamentals.",
+      "Month 2: Employee relations.",
+      "Month 3: HR policies and compliance.",
+      "Month 4: Training and development.",
+      "Month 5: Performance management.",
+      "Month 6: Strategic HR planning."
+    ],
+    "resources": [
+      "https://www.shrm.org/resourcesandtools/hr-topics/pages/default.aspx",
+      "https://www.hrhelpboard.com/",
+      "https://hbr.org/topic/human-resource-management",
+      "https://www.youtube.com/watch?v=Q-9POpmh3BI"
+    ]
+  },
+  "Sales Manager": {
+    "required_skills": ["Sales Strategy", "CRM", "Negotiation", "Customer Service", "Analytics"],
+    "roadmap": [
+      "Month 1: Sales fundamentals.",
+      "Month 2: CRM basics (HubSpot).",
+      "Month 3: Negotiation techniques.",
+      "Month 4: Customer relationship skills.",
+      "Month 5: Sales analytics.",
+      "Month 6: Team management."
+    ],
+    "resources": [
+      "https://academy.hubspot.com/courses/sales-enablement",
+      "https://www.salesforce.com/learning/",
+      "https://www.edx.org/learn/sales",
+      "https://www.youtube.com/watch?v=QpDQ59a3e1E"
+    ]
+  },
+  "Operations Manager": {
+    "required_skills": ["Operations Management", "Supply Chain", "Lean", "Quality Control", "Process Improvement"],
+    "roadmap": [
+      "Month 1: Learn operations basics.",
+      "Month 2: Supply chain management.",
+      "Month 3: Lean and Six Sigma basics.",
+      "Month 4: Quality management.",
+      "Month 5: Process improvement.",
+      "Month 6: Strategic planning."
+    ],
+    "resources": [
+      "https://nptel.ac.in/courses/110/107/110107094/",
+      "https://asq.org/quality-resources/six-sigma",
+      "https://www.coursera.org/learn/supply-chain-operations",
+      "https://www.youtube.com/watch?v=VVp7J3z3Rsk"
+    ]
+  },
+  "Supply Chain Manager": {
+    "required_skills": ["Supply Chain", "Logistics", "Inventory Management", "Procurement", "Analytics"],
+    "roadmap": [
+      "Month 1: Supply chain basics.",
+      "Month 2: Logistics fundamentals.",
+      "Month 3: Inventory management.",
+      "Month 4: Procurement and vendors.",
+      "Month 5: Analytics in supply chain.",
+      "Month 6: Risk management."
+    ],
+    "resources": [
+      "https://www.edx.org/course/supply-chain-management",
+      "https://www.investopedia.com/terms/s/supplychain.asp",
+      "https://www.cscmp.org/",
+      "https://www.youtube.com/watch?v=YfWH3d4j02A"
+    ]
+  },
+  "Product Manager": {
+    "required_skills": ["Product Strategy", "Market Research", "Agile", "Data Analysis", "User Experience"],
+    "roadmap": [
+      "Month 1: Product management basics.",
+      "Month 2: Market research.",
+      "Month 3: Agile methodologies.",
+      "Month 4: UX design principles.",
+      "Month 5: Data-driven decisions.",
+      "Month 6: Product launch strategy."
+    ],
+    "resources": [
+      "https://www.productplan.com/learn/",
+      "https://www.atlassian.com/agile/product-management",
+      "https://www.interaction-design.org/courses",
+      "https://www.youtube.com/watch?v=bDSflfP7xqc"
+    ]
+  },
+  "Data Analyst": {
+    "required_skills": ["SQL", "Excel", "Python", "Data Visualization", "Statistics"],
+    "roadmap": [
+      "Month 1: Data basics.",
+      "Month 2: SQL for queries.",
+      "Month 3: Excel and Python.",
+      "Month 4: Data visualization tools.",
+      "Month 5: Statistics for analysis.",
+      "Month 6: Advanced reporting."
+    ],
+    "resources": [
+      "https://sqlbolt.com/",
+      "https://exceljet.net/",
+      "https://www.kaggle.com/learn/python",
+      "https://www.tableau.com/learn/training",
+      "https://www.khanacademy.org/math/statistics-probability",
+      "https://www.youtube.com/watch?v=ua-CiDNNj30"
+    ]
+  },
+  "UX/UI Designer": {
+    "required_skills": ["Design Principles", "Prototyping", "User Research", "Adobe XD", "Figma"],
+    "roadmap": [
+      "Month 1: Learn design fundamentals.",
+      "Month 2: User research and personas.",
+      "Month 3: Prototyping basics.",
+      "Month 4: Learn Figma/Adobe XD.",
+      "Month 5: Usability testing.",
+      "Month 6: Build portfolio."
+    ],
+    "resources": [
+      "https://www.coursera.org/professional-certificates/google-ux-design",
+      "https://www.figma.com/resources/learn-design/",
+      "https://www.adobe.com/products/xd/learn/get-started.html",
+      "https://www.youtube.com/watch?v=c9Wg6Cb_YlU"
+    ]
+  },
+  "Content Writer": {
+    "required_skills": ["Writing", "SEO", "Content Strategy", "Grammar", "Research"],
+    "roadmap": [
+      "Month 1: Writing fundamentals.",
+      "Month 2: Learn content strategy.",
+      "Month 3: SEO basics.",
+      "Month 4: Research and fact-checking.",
+      "Month 5: Write across formats.",
+      "Month 6: Build portfolio and freelance."
+    ],
+    "resources": [
+      "https://owl.purdue.edu/",
+      "https://moz.com/learn/seo",
+      "https://www.copyblogger.com/",
+      "https://www.grammarly.com/blog/",
+      "https://www.youtube.com/watch?v=ahJVj5FbfkA"
+    ]
+  },
+  "Graphic Designer": {
+    "required_skills": ["Adobe Photoshop", "Illustrator", "InDesign", "Typography", "Color Theory"],
+    "roadmap": [
+      "Month 1: Learn design basics.",
+      "Month 2: Photoshop fundamentals.",
+      "Month 3: Illustrator basics.",
+      "Month 4: Layout design in InDesign.",
+      "Month 5: Typography and branding.",
+      "Month 6: Build portfolio."
+    ],
+    "resources": [
+      "https://www.adobe.com/creativecloud/learn.html",
+      "https://www.canva.com/learn/",
+      "https://www.typography.com/academy",
+      "https://color.adobe.com/create/color-wheel",
+      "https://www.youtube.com/watch?v=IxkJ7bEwbHA"
+    ]
+  },
+  "SEO Specialist": {
+    "required_skills": ["SEO", "Keyword Research", "Analytics", "Content Marketing", "Technical SEO"],
+    "roadmap": [
+      "Month 1: SEO basics.",
+      "Month 2: Keyword research.",
+      "Month 3: On-page SEO.",
+      "Month 4: Off-page SEO.",
+      "Month 5: Analytics for SEO.",
+      "Month 6: Advanced SEO strategies."
+    ],
+    "resources": [
+      "https://moz.com/learn/seo",
+      "https://ahrefs.com/seo",
+      "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+      "https://analytics.google.com/analytics/academy/",
+      "https://www.youtube.com/watch?v=xsVTqzratPs"
+    ]
+  },
+  "Social Media Manager": {
+    "required_skills": ["Social Media", "Content Creation", "Analytics", "Advertising", "Community Management"],
+    "roadmap": [
+      "Month 1: Social media platforms overview.",
+      "Month 2: Content creation basics.",
+      "Month 3: Analytics & insights.",
+      "Month 4: Paid ads and campaigns.",
+      "Month 5: Community engagement.",
+      "Month 6: Influencer marketing."
+    ],
+    "resources": [
+      "https://www.hootsuite.com/education",
+      "https://buffer.com/library/social-media-marketing/",
+      "https://business.facebook.com/learn/",
+      "https://analytics.google.com/analytics/academy/",
+      "https://www.youtube.com/watch?v=0eUeL3n7fDs"
+    ]
+  },
+  "E-commerce Manager": {
+    "required_skills": ["E-commerce", "Shopify", "Marketing", "Analytics", "Customer Service"],
+    "roadmap": [
+      "Month 1: Learn e-commerce basics.",
+      "Month 2: Shopify store setup.",
+      "Month 3: Marketing for e-commerce.",
+      "Month 4: Analytics & optimization.",
+      "Month 5: Customer service strategies.",
+      "Month 6: Scaling online business."
+    ],
+    "resources": [
+      "https://www.shopify.com/learn",
+      "https://www.bigcommerce.com/articles/ecommerce/",
+      "https://www.google.com/retail/",
+      "https://analytics.google.com/analytics/academy/",
+      "https://www.youtube.com/watch?v=K0lWSB2QoIQ"
+    ]
+  }
+
+
+}

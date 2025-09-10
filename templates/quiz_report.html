@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiz Report - {{ career_name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        .report-card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .report-card:hover {
+            transform: translateY(-5px);
+        }
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+        .suggestion-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-5 fw-bold mb-3">{{ career_name }} Quiz Report</h1>
+                    <p class="lead mb-0">Your performance analysis</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Overall Score -->
+        <div class="row mb-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="card report-card">
+                    <div class="card-body text-center">
+                        <div class="score-circle bg-{{ 'success' if percentage >= 80 else 'warning' if percentage >= 60 else 'danger' }}">
+                            {{ "%.1f"|format(percentage) }}%
+                        </div>
+                        <h4 class="mt-3">Overall Score</h4>
+                        <p class="mb-0">{{ correct }} out of {{ total }} correct</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Difficulty Breakdown -->
+        <div class="row mb-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="card report-card">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Performance by Difficulty</h4>
+                    </div>
+                    <div class="card-body">
+                        {% for diff, data in difficulty_breakdown.items() %}
+                        {% if data.total > 0 %}
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <span class="badge bg-{{ 'success' if diff == 'Easy' else 'warning' if diff == 'Intermediate' else 'danger' }} fs-6">{{ diff }}</span>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="progress">
+                                    <div class="progress-bar bg-{{ 'success' if diff == 'Easy' else 'warning' if diff == 'Intermediate' else 'danger' }}" style="width: { (data.correct / data.total * 100)|round }%">
+                                        {{ data.correct }}/{{ data.total }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestions -->
+        {% if suggestions %}
+        <div class="row mb-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="card report-card">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0">Personalized Suggestions</h4>
+                    </div>
+                    <div class="card-body">
+                        {% for suggestion in suggestions %}
+                        <div class="suggestion-item">
+                            <p class="mb-0">{{ suggestion }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Navigation -->
+        <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+                <a href="{{ url_for('quiz', career_name=career_name) }}" class="btn btn-outline-primary me-3">Retake Quiz</a>
+                <a href="{{ url_for('roadmap', career=career_name) }}" class="btn btn-success me-3">View Roadmap</a>
+                <a href="{{ url_for('analyze') }}" class="btn btn-primary">Back to Results</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
