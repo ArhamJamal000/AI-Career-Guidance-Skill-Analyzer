@@ -24,4 +24,6 @@
   "Agile": ["Scrum", "Kanban", "Sprint Planning", "Retrospectives", "User Stories"],
   "Project Management": ["Gantt Charts", "Risk Management", "Stakeholder Management", "Budgeting"],
   "Excel": ["Pivot Tables", "VLOOKUP", "Macros", "Data Analysis", "Charts"],
-  "Data Analysis": ["Pandas", "NumPy", "SQL", "Statistics", "Visualization"]}
+  "Data Analysis": ["Pandas", "NumPy", "SQL", "Statistics", "Visualization"],
+  "MongoDB": ["SQL","NumPy","Statistics"]
+}

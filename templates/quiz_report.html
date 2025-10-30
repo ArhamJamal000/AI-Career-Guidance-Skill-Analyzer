@@ -64,7 +64,10 @@
                             {{ "%.1f"|format(percentage) }}%
                         </div>
                         <h4 class="mt-3">Overall Score</h4>
-                        <p class="mb-0">{{ correct }} out of {{ total }} correct</p>
+                        <p class="mb-2">{{ correct }} out of {{ total }} correct</p>
+                        <div class="progress mb-3" style="height: 20px;">
+                            <div class="progress-bar bg-{{ 'success' if percentage >= 80 else 'warning' if percentage >= 60 else 'danger' }}" role="progressbar" style="width: {{ percentage }}%;" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100">{{ "%.1f"|format(percentage) }}%</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,7 +89,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="progress">
-                                    <div class="progress-bar bg-{{ 'success' if diff == 'Easy' else 'warning' if diff == 'Intermediate' else 'danger' }}" style="width: { (data.correct / data.total * 100)|round }%">
+                                    <div class="progress-bar bg-{{ 'success' if diff == 'Easy' else 'warning' if diff == 'Intermediate' else 'danger' }}" style="width: {{ (data.correct / data.total * 100)|round }}%">
                                         {{ data.correct }}/{{ data.total }}
                                     </div>
                                 </div>
@@ -118,6 +121,56 @@
             </div>
         </div>
         {% endif %}
+
+        <!-- Detailed Review -->
+        <div class="row mb-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="card report-card">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0">Detailed Question Review</h4>
+                    </div>
+                    <div class="card-body">
+                        {% for item in review_data %}
+                        <div class="card mb-3 border-{{ 'success' if item.is_correct else 'danger' }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ loop.index }}. {{ item.question }}</h5>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Your Answer:</strong>
+                                        <span class="badge bg-{{ 'success' if item.is_correct else 'danger' }} fs-6">{{ item.user_answer if item.user_answer else 'Not Answered' }}</span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Correct Answer:</strong>
+                                        <span class="badge bg-success fs-6">{{ item.correct_answer }}</span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Status:</strong>
+                                        {% if item.is_correct %}
+                                            <span class="badge bg-success">✅ Correct</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">❌ Wrong</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% if not item.is_correct %}
+                                <div class="mt-3">
+                                    <strong>Options:</strong>
+                                    <ul class="list-inline">
+                                        {% for option in item.options %}
+                                        <li class="list-inline-item">
+                                            <span class="badge bg-light text-dark">{{ option }}</span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Navigation -->
         <div class="row">

@@ -4,10 +4,18 @@ import json
 from collections import defaultdict
 import json as json_module
 import requests
+import time
 import re
+import random
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)  # For session
+app.secret_key = os.urandom(24) 
+
+api_call_times = []  
+MAX_CALLS_PER_MINUTE = 3
+CACHE_DURATION_MINUTES = 60  # Cache quizzes for 1 hour
+quiz_cache = {}  # Cache for generated quizzes
 
 # Load data from JSON files
 with open('data/careers.json', 'r') as f:
@@ -64,8 +72,8 @@ def analyze_skills(user_ratings, skill_levels):
             if skill in skill_levels:
                 avg_rating = skill_levels[skill]['average_rating']
                 total_score += avg_rating
-                max_score += 5  # Max rating is 5
-                if avg_rating <= 2.5:  # Consider skills with rating <= 2.5 as low-rated
+                max_score += 5  
+                if avg_rating <= 2.5:
                     low_rated_skills.append(skill)
             else:
                 missing_skills.append(skill)
@@ -73,7 +81,7 @@ def analyze_skills(user_ratings, skill_levels):
 
         match_percentage = (total_score / max_score) * 100 if max_score > 0 else 0
 
-        # Calculate readiness level based on match percentage
+        # Calculate level based on match percentage
         if match_percentage <= 30:
             readiness_level = "Beginner"
         elif match_percentage <= 70:
@@ -100,14 +108,13 @@ def generate_roadmap(career, user_ratings, skill_levels):
     missing_skills = []
     low_rated_skills = []
 
-    # Identify missing and low-rated skills
     for skill in career_data[career]['required_skills']:
         if skill not in skill_levels:
             missing_skills.append(skill)
         elif skill_levels[skill]['average_rating'] <= 2.5:
             low_rated_skills.append(skill)
 
-    # Customize roadmap to focus on missing/low-rated skills first
+    # Customize roadmap to focus 
     customized_roadmap = []
     if missing_skills or low_rated_skills:
         focus_skills = missing_skills + low_rated_skills
@@ -128,19 +135,53 @@ def analyze_level(match_pct):
 
 def parse_gemini_mcqs(response_text):
     questions = []
-    blocks = re.split(r"Q\d+\.", response_text)
+    blocks = re.split(r"\*\*Q\d+\.\*\*", response_text)
     for block in blocks:
         block = block.strip()
         if not block: continue
+        print("Parsing question block:\n", block)  # Debug log
         lines = block.split("\n")
         q_text = lines[0].strip()
         options = [line[3:].strip() for line in lines if re.match(r"^[A-D]\)", line.strip())]
-        answer_match = re.search(r"Answer:\s*([A-D])", block)
-        answer = answer_match.group(1) if answer_match else None
-        diff_match = re.search(r"Difficulty:\s*(\w+)", block, re.IGNORECASE)
+        answer_match = re.search(r"\*\*Answer:\*\*\s*([A-Da-d])", block)
+        if not answer_match:
+            answer_match = re.search(r"Answer:\s*([A-Da-d])", block, re.IGNORECASE)
+        answer = answer_match.group(1).upper() if answer_match else None
+        diff_match = re.search(r"\*\*Difficulty:\*\*\s*(\w+)", block, re.IGNORECASE)
+        if not diff_match:
+            diff_match = re.search(r"Difficulty:\s*(\w+)", block, re.IGNORECASE)
         difficulty = diff_match.group(1).capitalize() if diff_match else "Unknown"
+        print(f"Extracted difficulty: {difficulty}")  # Debug log
         questions.append({"question": q_text, "options": options, "answer": answer, "difficulty": difficulty})
     return questions
+
+def check_rate_limit():
+    """Check if we're within the rate limit (3 calls per minute)"""
+    global api_call_times
+    now = datetime.now()
+    api_call_times = [t for t in api_call_times if now - t < timedelta(minutes=1)]
+    return len(api_call_times) < MAX_CALLS_PER_MINUTE
+
+def record_api_call():
+    """Record an API call timestamp"""
+    global api_call_times
+    api_call_times.append(datetime.now())
+
+def get_cached_quiz(career_name):
+    """Get cached quiz if available and not expired"""
+    if career_name in quiz_cache:
+        cached_time, questions = quiz_cache[career_name]
+        if datetime.now() - cached_time < timedelta(minutes=CACHE_DURATION_MINUTES):
+            print(f"Using cached quiz for {career_name}")  # Debug log
+            return questions
+        else:
+            del quiz_cache[career_name]
+    return None
+
+def cache_quiz(career_name, questions):
+    """Cache the generated quiz"""
+    quiz_cache[career_name] = (datetime.now(), questions)
+    print(f"Cached quiz for {career_name}")  # Debug log
 
 @app.route('/')
 def home():
@@ -180,10 +221,10 @@ def analyze():
 
         # Get recommendations with skill levels
         recommendations = analyze_skills(user_ratings, skill_levels)
-        top_3 = recommendations[:3]  # Show top 3 career recommendations
+        top_6 = recommendations[:6]  # Show top 6 career recommendations
 
         skill_levels_json = json_module.dumps(skill_levels)
-        return render_template('results.html', recommendations=top_3, user_ratings=user_ratings, skill_levels=skill_levels, skill_levels_json=skill_levels_json)
+        return render_template('results.html', recommendations=top_6, user_ratings=user_ratings, skill_levels=skill_levels, skill_levels_json=skill_levels_json)
 
 @app.route('/roadmap/<career>')
 def roadmap(career):
@@ -211,10 +252,41 @@ def quiz(career_name):
     if career_name not in career_data:
         return redirect(url_for('home'))
 
+    
+    cached_questions = get_cached_quiz(career_name)
+    if cached_questions:
+        return render_template('quiz.html', career_name=career_name, questions=cached_questions)
+
+   
+    if not check_rate_limit():
+        print("Rate limit exceeded. Please wait before making more requests.")
+        return render_template('quiz_unavailable.html', career_name=career_name)
+
     # Always generate new quiz using Gemini API
-    api_key = " "  # Provided API key
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={api_key}"
-    prompt = f"Generate 10 multiple choice questions for {career_name}. Each question should have 4 options A-D, the correct answer, and difficulty level (Easy, Intermediate, Difficult). Ensure a mix of easy, intermediate, and difficult questions. Format as Q1. Question text\nA) option1\nB) option2\nC) option3\nD) option4\nAnswer: A\nDifficulty: Easy\n\nQ2. ..."
+    api_key = os.environ.get('GEMINI_API_KEY', 'AIzaSyCusi29EUENaQ5_H6nfWTEtX5JpU9EM2yw')  # Use env var, fallback to provided key
+    if not api_key:
+        print("Gemini API key not found. Please set GEMINI_API_KEY environment variable.")
+        return render_template('quiz_unavailable.html', career_name=career_name)
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+    prompt = f"""Generate exactly 10 multiple choice questions for {career_name}. Each question must have exactly 4 options labeled A, B, C, D. Provide the correct answer and difficulty level (Easy, Intermediate, or Difficult). Ensure a mix of easy, intermediate, and difficult questions. Format each question exactly as follows, using bold for markers:
+
+**Q1.** Question text here
+A) Option 1
+B) Option 2
+C) Option 3
+D) Option 4
+**Answer:** A
+**Difficulty:** Easy
+
+**Q2.** Next question text
+A) Option 1
+B) Option 2
+C) Option 3
+D) Option 4
+**Answer:** B
+**Difficulty:** Intermediate
+
+And so on for all 10 questions."""
     data = {
         "contents": [
             {
@@ -226,16 +298,32 @@ def quiz(career_name):
             }
         ]
     }
-    try:
-        response = requests.post(url, json=data)
-        response.raise_for_status()
-        print("Gemini API response:", response.text)  # Debug log
-        response_text = response.json()['candidates'][0]['content']['parts'][0]['text']
-        questions = parse_gemini_mcqs(response_text)
-    except Exception as e:
-        print("Gemini API error:", str(e))  # Debug log
-        # API failure
-        return render_template('quiz_unavailable.html', career_name=career_name)
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(url, json=data, timeout=60)
+            response.raise_for_status()
+            print("Gemini API response:", response.text)  # Debug log
+            response_json = response.json()
+            if 'candidates' in response_json and len(response_json['candidates']) > 0:
+                response_text = response_json['candidates'][0]['content']['parts'][0]['text']
+                questions = parse_gemini_mcqs(response_text)
+                # Record API call and cache quiz
+                record_api_call()
+                cache_quiz(career_name, questions)
+                break  # success
+            else:
+                print("Gemini API error: No candidates in response")  # Debug log
+                return render_template('quiz_unavailable.html', career_name=career_name)
+        except requests.exceptions.RequestException as e:
+            print(f"Gemini API error on attempt {attempt + 1}: {str(e)}")
+            if attempt < max_retries - 1:
+                wait_time = 2 ** attempt
+                print(f"Retrying in {wait_time} seconds...")
+                time.sleep(wait_time)
+            else:
+                print("All retries failed.")
+                return render_template('quiz_unavailable.html', career_name=career_name)
 
     # Store in session for submission
     quiz_questions = session.get('quiz_questions', {})
@@ -261,14 +349,27 @@ def submit_quiz(career_name):
     correct = 0
     total = len(quiz_questions)
     difficulty_breakdown = {'Easy': {'correct': 0, 'total': 0}, 'Intermediate': {'correct': 0, 'total': 0}, 'Difficult': {'correct': 0, 'total': 0}, 'Unknown': {'correct': 0, 'total': 0}}
+    review_data = []
     for i, q in enumerate(quiz_questions):
         diff = q['difficulty']
         if diff not in difficulty_breakdown:
             diff = 'Unknown'
         difficulty_breakdown[diff]['total'] += 1
-        if user_answers[i] == q['answer']:
+        user_ans = user_answers[i].upper() if user_answers[i] else ''
+        correct_ans = q['answer'].upper() if q['answer'] else ''
+        is_correct = user_ans == correct_ans
+        if is_correct:
             correct += 1
             difficulty_breakdown[diff]['correct'] += 1
+        review_data.append({
+            'question': q['question'],
+            'options': q['options'],
+            'user_answer': user_ans,
+            'correct_answer': correct_ans,
+            'is_correct': is_correct,
+            'difficulty': diff
+        })
+        print(f"Question {i}: User answer: '{user_ans}', Correct answer: '{correct_ans}'")  # Debug log
 
     percentage = (correct / total) * 100 if total > 0 else 0
 
@@ -280,8 +381,7 @@ def submit_quiz(career_name):
             if pct < 50:
                 suggestions.append(f"Focus on {diff.lower()} level concepts in {career_name}.")
 
-    return render_template('quiz_report.html', career_name=career_name, correct=correct, total=total, percentage=percentage, difficulty_breakdown=difficulty_breakdown, suggestions=suggestions)
+    return render_template('quiz_report.html', career_name=career_name, correct=correct, total=total, percentage=percentage, difficulty_breakdown=difficulty_breakdown, suggestions=suggestions, review_data=review_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
