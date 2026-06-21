@@ -1,4 +1,4 @@
-# Flask Career Guidance System
+# Gen AI Career Guidance System
 
 A web-based career guidance application built with Flask that helps users assess their skills and get personalized career recommendations. The system includes dynamic quiz generation using Google's Gemini AI for testing knowledge in various career fields.
 
